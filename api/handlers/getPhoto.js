@@ -14,12 +14,17 @@ const getPhoto = async (req, res) => {
     );
 
     if (response.data) {
-      return res.status(200).json(response.data);
+      const dataPhoto = {
+        id: response.data.id,
+        url: response.data.urls,
+      };
+
+      return res.status(200).json(dataPhoto);
     } else {
       return res.status(400).send("Error to get Information");
     }
   } catch (error) {
-    return req.status(500).send("Internal Server Error");
+    return res.status(500).send("Internal Server Error");
   }
 };
 

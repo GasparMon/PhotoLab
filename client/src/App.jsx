@@ -1,34 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
+import Navbar from './components/Navbar'
+import Sidebar from './components/Sidebar'
+import AppGetPhotos from '../controllers/AppGetPhotos'
+import AppGetCollections from '../controllers/AppGetCollections'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [collections, setCollections] = useState([])
+
+  useEffect(() => {
+
+    const DataPhotos = async () => {
+      
+      try{
+        const dataPhotos = await AppGetPhotos();
+
+        if(dataPhotos){
+          console.log(dataPhotos);
+        }
+      }catch(error){
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    DataPhotos();
+  },[])
+
+  useEffect(() => {
+    const DataCollection = async () => {
+        try {
+            const dataCollections = await AppGetCollections();
+            if (dataCollections) {
+          
+                setCollections(dataCollections.slice(4, 7));
+            }
+        } catch (error) {
+
+            console.error('Error fetching data:', error);
+        }
+    };
+    DataCollection();
+}, []);
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='main_app_div'>
+    <Navbar></Navbar>
+    <Sidebar collections = {collections} ></Sidebar>
+    </div>
   )
 }
 

@@ -3,6 +3,7 @@ const getCollections = require('../handlers/getCollections');
 const getPhoto = require('../handlers/getPhoto');
 const getPhotoCollections = require('../handlers/getPhotoCollections');
 const getPhotos = require('../handlers/getPhotos');
+const getRelatedCollections = require('../handlers/getReleatedCollections');
 const getSearchCollections = require('../handlers/getSearchCollections');
 const getSearchPhotos = require('../handlers/getSearchPhoto');
 const getStats = require('../handlers/getStats');
@@ -18,5 +19,6 @@ routes.get("/collection/photos/:id", getPhotoCollections);
 routes.get("/topics/:page", getPhotos);
 routes.get("/search/photo", getSearchPhotos);
 routes.get("/search/collections", getSearchCollections);
+routes.get("/collection/related/:id", getRelatedCollections);
 
 module.exports = routes

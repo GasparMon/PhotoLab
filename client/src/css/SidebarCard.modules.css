@@ -1,0 +1,54 @@
+.main_sidecard{
+    background-color: rgb(231, 231, 231);
+    height: 30%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    cursor: pointer;
+    border: solid transparent 1px;
+    transition: border 0.5s ease;
+}
+
+.main_sidecard:hover{
+    border: solid rgb(144, 144, 144) 1px;
+}
+
+.sidecard_img {
+    height: 70%;
+    width: 30%;
+    border-radius: 10px;
+    display: block; 
+}
+
+.sidecard_img img {
+    width: 100%; 
+    height: 100%; 
+    border-radius: 10px; 
+    object-fit: cover; 
+}
+
+.sidecard_title{
+    height: 70%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidecard_title h4,
+.sidecard_title p {
+    margin: 0;
+    color: #363636;
+    font-size: 15px;
+}
+
+
+.sidecard_title div{
+    height: 60%;
+    display: flex;
+    align-items: center;
+}

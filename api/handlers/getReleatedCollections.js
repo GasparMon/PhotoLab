@@ -5,16 +5,17 @@ require('dotenv').config();
 const URL = process.env.API_URL;
 const apiKey = process.env.API_KEY;
 
-const getCollections = async (req, res) => {
+const getRelatedCollections = async (req, res) => {
 
     try{
 
-        const {page} = req.params;
+        const {id} = req.params;
 
-        const response = await axios.get(`${URL}/collections/?client_id=${apiKey}&page=${page}`);
+        const response = await axios.get(`${URL}/collections/${id}/related/?client_id=${apiKey}`);
 
         if(response.data){
 
+            
             const dataCollection = response.data.map((element) => ({
                 cover_photo: element.cover_photo,
                 id: element.id,
@@ -32,4 +33,4 @@ const getCollections = async (req, res) => {
     }
 }
 
-module.exports = getCollections;
+module.exports = getRelatedCollections;
