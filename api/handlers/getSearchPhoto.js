@@ -7,7 +7,7 @@ const apiKey = process.env.API_KEY;
 const getSearchPhotos = async (req, res) => {
   
     const query = req.query.query || '';
-    const page = 1; 
+    const page = req.params.page || 1;
 
   try {
     const response = await axios.get(`${URL}/search/photos`, {
@@ -21,7 +21,8 @@ const getSearchPhotos = async (req, res) => {
         },
       });
 
-    if (response) {
+    if (response.data) {
+
       return res.status(200).json(response.data);
     } else {
       return res.status(400).json("Error to get Information");
