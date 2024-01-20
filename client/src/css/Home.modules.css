@@ -35,9 +35,48 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
   
+  .grid-img {
+    position: relative;
+    width: 100%;
+    margin: 10px 0 10px 0;
+    
+    overflow: hidden;
+  }
+  
+  .grid_gallery_img {
+    width: 100%;
+    display: block;
+  }
+  
+  .grid-img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  
+  .grid-img:hover::before {
+    opacity: 1;
+  }
+  
+  .photo_mode_icon {
+    position: absolute;
+    height: 60px;
+    top: 40px; /* Ajusta la posición verticalmente */
+    left: 90%; /* Ajusta la posición horizontalmente */
+    transform: translate(-50%, -50%); /* Centra el icono */
+    z-index: 2; /* Asegura que esté sobre la imagen */
+    transition: scale 0.7s ease;
+    cursor: pointer;
   }
 
-  .grid-img{
-    margin: 10px 0 10px 0;
+  .photo_mode_icon:hover {
+    scale: 1.1;
   }

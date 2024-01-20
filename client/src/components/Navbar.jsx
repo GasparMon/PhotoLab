@@ -19,13 +19,11 @@ export default function Navbar() {
       </div>
       <div className="navbar_theme">
         <label class="container">
-          <input id="check" type="checkbox" />
-          <span></span>
-          <label for="check" class="shadow"></label>
+
         </label>
       </div>
       <div className="navbar_info">
-        <img src="/img/about_me2.png"></img>
+        <h2>About Me</h2>
       </div>
     </div>
   );
