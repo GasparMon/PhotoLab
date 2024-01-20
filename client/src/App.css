@@ -1,4 +1,53 @@
-.main_app_div{
+.main_app_div {
+  display: flex;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
+}
+
+.main_app_navbar {
+  height: 10%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.main_app_container {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.main_home{
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+  width: 100%;
+}
+.main_app_sidebar {
+  height: 90%;
+  width: 15%;
+  position: fixed;
+  top: 10%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.main_app_gallery {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  height: 95%;
+  width: 100%;
 }

@@ -5,14 +5,25 @@ const URL = process.env.API_URL;
 const apiKey = process.env.API_KEY;
 
 const getTopics = async (req, res) => {
-  
-  const {page} = req.params;
-
   try {
-    const response = await axios.get(`${URL}/topics/?client_id=${apiKey}&page=${page}`);
+    const response = await axios.get(`${URL}/topics/`, {
+      params: {
+        order_by: "latest",
+      },
+      headers: {
+        Authorization: `Client-ID ${apiKey}`,
+      },
+    });
 
     if (response) {
-      return res.status(200).json(response.data);
+   
+      const dataTopic = response.data.map((element) => ({
+        id: element.id,
+        title: element.title,
+        cover_photo: element.cover_photo,
+    }));
+
+      return res.status(200).json(dataTopic);
     } else {
       return res.status(400).json("Error to get Information");
     }

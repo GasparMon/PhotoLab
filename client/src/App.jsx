@@ -1,55 +1,35 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
-import AppGetPhotos from '../controllers/AppGetPhotos'
-import AppGetCollections from '../controllers/AppGetCollections'
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+import AppGetPhotos from "../controllers/AppGetPhotos";
+import AppGetCollections from "../controllers/AppGetCollections";
+import Home from "./components/Home";
 
 function App() {
-
-  const [collections, setCollections] = useState([])
-
-  useEffect(() => {
-
-    const DataPhotos = async () => {
-      
-      try{
-        const dataPhotos = await AppGetPhotos();
-
-        if(dataPhotos){
-          console.log(dataPhotos);
-        }
-      }catch(error){
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    DataPhotos();
-  },[])
-
-  useEffect(() => {
-    const DataCollection = async () => {
-        try {
-            const dataCollections = await AppGetCollections();
-            if (dataCollections) {
-          
-                setCollections(dataCollections.slice(4, 7));
-            }
-        } catch (error) {
-
-            console.error('Error fetching data:', error);
-        }
-    };
-    DataCollection();
-}, []);
-
-
   return (
-    <div className='main_app_div'>
-    <Navbar></Navbar>
-    <Sidebar collections = {collections} ></Sidebar>
+    <div className="main_app_div">
+      <div className="main_app_navbar">
+        <Navbar></Navbar>
+      </div>
+
+      <div className="main_app_container">
+        <div className="main_over"></div>
+        <div className="main_home">
+        <div className="main_app_sidebar">
+          <Sidebar></Sidebar>
+        </div>
+
+        <div className="main_app_gallery">
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

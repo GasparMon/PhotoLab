@@ -1,6 +1,6 @@
 .main_sidecard{
-    background-color: rgb(231, 231, 231);
-    height: 30%;
+    background-color: rgb(210, 210, 210);
+    height: 28%;
     width: 90%;
     display: flex;
     flex-direction: row;
@@ -10,10 +10,13 @@
     cursor: pointer;
     border: solid transparent 1px;
     transition: border 0.5s ease;
+    transition: background-color 0.5s ease;
+    
 }
 
 .main_sidecard:hover{
     border: solid rgb(144, 144, 144) 1px;
+    background-color: rgb(190, 190, 190);
 }
 
 .sidecard_img {
@@ -39,11 +42,15 @@
     justify-content: center;
 }
 
+.sidecard_title h1{
+    color: #000000;
+}
+
 .sidecard_title h4,
 .sidecard_title p {
     margin: 0;
-    color: #363636;
-    font-size: 15px;
+    color: #000000;
+    font-size: 13px;
 }
 
 

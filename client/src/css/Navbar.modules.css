@@ -1,6 +1,6 @@
 .main_container_navbar{
     position: relative;
-    height: 10%;
+    height: 100%;
     width: 100%;
     background-color: rgb(255, 255, 255);
     border-bottom: solid rgb(201, 201, 201) 1px;
@@ -35,7 +35,7 @@
 
 .navbar_title h1{
     font-size: 40px;
-    color: #575757;
+    color: #000000;
 }
 
 .navbar_searchbar{
@@ -59,7 +59,7 @@
     text-decoration: none;
     font-size: 20px;
     margin: 12px 14px;
-    cursor: pointer;
+    
     
   }
   
