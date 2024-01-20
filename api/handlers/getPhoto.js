@@ -14,9 +14,12 @@ const getPhoto = async (req, res) => {
     );
 
     if (response.data) {
+ 
       const dataPhoto = {
         id: response.data.id,
         url: response.data.urls,
+        user: response.data.user,
+        alt: response.data.alt_description,
       };
 
       return res.status(200).json(dataPhoto);

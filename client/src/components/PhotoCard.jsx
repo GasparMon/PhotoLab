@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function PhotoCard({ id, img }) {
   const [isHovered, setHovered] = useState(false);
@@ -19,7 +20,9 @@ export default function PhotoCard({ id, img }) {
     >
       <img src={`${img}`} alt={`${id}`} className="grid_gallery_img" />
       {isHovered && (
+        <Link to={`/photo/${id}`} className="Link_photo">
         <img src="/img/PhotoMode.png" className="photo_mode_icon" />
+        </Link>
       )}
     </div>
   );

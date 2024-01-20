@@ -5,10 +5,7 @@ const initialState = {
     appData: {
 
         landingGallery: {},
-        searchGalleryOne: [],
-        searchGalleryTwo: [],
-        searchGalleryThree: [],
-        name:""
+        query:""
 
     }
 }
@@ -28,9 +25,14 @@ export default function reducer(state = initialState, action){
             }
 
         case GALLERYNAME:
+          
             return{
                 ...state,
-                name: action.payload.name
+                appData:{
+                    ...state.appData,
+                    landingGallery:[],
+                    query: action.payload
+                }
             }
 
         default:

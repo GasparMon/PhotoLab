@@ -1,6 +1,20 @@
+import { useState } from "react";
 import "../css/Navbar.modules.css";
+import { useDispatch } from "react-redux";
+import { getGalleryName } from "../../redux/actions";
 
 export default function Navbar() {
+  const dispatch = useDispatch();
+  const [query, setquery] = useState("");
+
+  const handleChange = (event) => {
+    setquery(event.target.value);
+  };
+
+  const handleSearch = () => {
+    dispatch(getGalleryName(query))
+
+  }
   return (
     <div className="main_container_navbar">
       <div className="navbar_icon">
@@ -14,13 +28,17 @@ export default function Navbar() {
           placeholder="Search for photos"
           className="navbar_input"
           type="text"
+          value={query}
+          onChange={handleChange}
         />
-        <img src="/img/search_photo.png" alt="search_icon"></img>
+        <img 
+        src="/img/search_photo.png"
+         alt="search_icon"
+         onClick={handleSearch}
+         ></img>
       </div>
       <div className="navbar_theme">
-        <label class="container">
-
-        </label>
+        <label class="container"></label>
       </div>
       <div className="navbar_info">
         <h2>About Me</h2>

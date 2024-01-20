@@ -1,0 +1,127 @@
+.main_container_photo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 85%;
+}
+
+.photo_title {
+  display: flex;
+  align-items: center;
+  height: 15%;
+  width: 80%;
+}
+
+.photo_title h1 {
+  font-size: 45px;
+  color: black;
+}
+
+.portrait_container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 85%;
+  width: 100%;
+  left: 10%;
+  align-items: center;
+  justify-content: baseline;
+
+}
+
+.photo_frame {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 72%;
+  align-items: center;
+  justify-content: baseline;
+}
+
+.photo_frame img {
+  position: relative;
+  height: 95%;
+  width: 95%;
+}
+
+.photo_info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 95%;
+  width: 25%;
+  border-left: solid rgb(201, 201, 201) 1px;
+}
+
+.creator_info {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 15%;
+  width: 100%;
+  border-bottom: solid rgb(201, 201, 201) 1px;
+  background-color: rgb(228, 228, 228);
+}
+
+.creator_img{
+  height: 100%;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.creator_img img{
+  height: 90%;
+  width: 90%;
+  border-radius: 50%;
+}
+.creator_quotes{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 70%;
+  padding: 0 0 0 10px;
+}
+
+.creator_quotes h3{
+    margin: 0;
+    color: #000000;
+    font-size: 25px;
+}
+
+.creator_quotes p{
+  margin: 0;
+  color: #000000;
+  font-size: 20px;
+}
+
+.photo_alt {
+  position: relative;
+  display: flex;
+  height: 70%;
+  width: 100%;
+  
+}
+
+.photo_alt p {
+  word-wrap: break-word;
+  overflow: auto;
+  font-size: 20px;
+  padding: 0 0 0 10px;
+}
+
+.gallery_back{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+.gallery_back img{
+  height: 80%;
+  cursor: pointer;
+}

@@ -6,14 +6,27 @@ import Sidebar from "./components/Sidebar";
 import AppGetPhotos from "../controllers/AppGetPhotos";
 import AppGetCollections from "../controllers/AppGetCollections";
 import Home from "./components/Home";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getPhotos } from "../redux/actions";
+import AppGetSearchPhoto from "../controllers/AppGetSearchPhoto";
+import Photo from "./components/Photo";
 
 function App() {
+
+  const appData = useSelector((state) => state.appData)
+  const {query} = appData;
+
 
   const dispatch = useDispatch();
 
   const [galleries, setGalleries] = useState(
+    {
+      gallery_one: [],
+      gallery_two: [],
+      gallery_three:[],
+    }
+  );
+  const [searchGallery, setsearchGallery] = useState(
     {
       gallery_one: [],
       gallery_two: [],
@@ -27,30 +40,58 @@ function App() {
   
   useEffect(() => {
 
-    const fetchData = async (page, galleryKey) => {
-      try {
-        const dataPhotos = await AppGetPhotos(page);
-        if (dataPhotos) {
-          setGalleries((prevGalleries) => ({
-            ...prevGalleries,
-            [galleryKey]: [...prevGalleries[galleryKey], ...dataPhotos],
-          }));
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-  
-    
-      fetchData(page_one, "gallery_one"),
-      fetchData(page_two, "gallery_two"),
-      fetchData(page_three, "gallery_three")
+if(query.length === 0){
 
-  }, [page_one, page_two, page_three]);
+  const fetchData = async (page, galleryKey) => {
+    try {
+      const dataPhotos = await AppGetPhotos(page);
+      if (dataPhotos) {
+        setGalleries((prevGalleries) => ({
+          ...prevGalleries,
+          [galleryKey]: [...prevGalleries[galleryKey], ...dataPhotos],
+        }));
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  
+    fetchData(page_one, "gallery_one")
+    // fetchData(page_two, "gallery_two"),
+    // fetchData(page_three, "gallery_three")
+}else{
+console.log(query)
+  const fetchData = async (page, galleryKey, query) => {
+    try {
+      const dataPhotos = await AppGetSearchPhoto(query, page);
+      if (dataPhotos) {
+        setsearchGallery((prevGalleries) => ({
+          ...prevGalleries,
+          [galleryKey]: [...prevGalleries[galleryKey], ...dataPhotos],
+        }));
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  
+    fetchData(page_one, "gallery_one", query)
+    // fetchData(page_two, "gallery_two"),
+    // fetchData(page_three, "gallery_three")
+
+}
+
+  }, [page_one, page_two, page_three, query, dispatch]);
 
   useEffect(()=>{
     dispatch(getPhotos(galleries))
   },[galleries])
+
+  useEffect(()=>{
+    dispatch(getPhotos(searchGallery))
+  },[searchGallery])
 
   const handleScroll = () => {
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
@@ -94,6 +135,7 @@ function App() {
         <div className="main_app_gallery">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/photo/:id" element={<Photo/>}/>
           </Routes>
         </div>
         </div>

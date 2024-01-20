@@ -23,7 +23,13 @@ const getSearchPhotos = async (req, res) => {
 
     if (response.data) {
 
-      return res.status(200).json(response.data);
+      const photosData = response.data.map((element) => ({
+        id: element.id,
+        url: element.urls,
+        user: element.user,
+    }));
+
+      return res.status(200).json(photosData);
     } else {
       return res.status(400).json("Error to get Information");
     }

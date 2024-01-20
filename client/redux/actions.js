@@ -16,10 +16,10 @@ export function getCollections(collectionsData){
     }
 }
 
-export function getGalleryName(name){
+export function getGalleryName(query){
 
     return{
         type: GALLERYNAME,
-        payload: name,
+        payload: query,
     }
 }
