@@ -21,7 +21,6 @@
 }
 
 .home_gallery {
-  
     padding: 0 20px 0 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -29,55 +28,14 @@
     gap: 16px;
     grid-auto-flow: dense;
     height: 85%;
-    width: 78%;
+    width: 80%;
   }
+
   
   .grid-item {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     
-  }
-  
-  .grid-img {
-    position: relative;
-    width: 100%;
-    margin: 10px 0 10px 0;
-    overflow: hidden;
-  }
-  
-  .grid_gallery_img {
-    width: 100%;
-    display: block;
-  }
-  
-  .grid-img::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    transition: opacity 0.6s ease;
-  }
-  
-  .grid-img:hover::before {
-    opacity: 1;
-  }
-  
-  .photo_mode_icon {
-    position: absolute;
-    height: 60px;
-    top: 40px; /* Ajusta la posición verticalmente */
-    left: 90%; /* Ajusta la posición horizontalmente */
-    transform: translate(-50%, -50%); /* Centra el icono */
-    z-index: 2; /* Asegura que esté sobre la imagen */
-    transition: scale 0.7s ease;
-    cursor: pointer;
-  }
-
-  .photo_mode_icon:hover {
-    scale: 1.1;
   }

@@ -1,10 +1,9 @@
 import { useState } from "react";
 import "../css/CollectionsCard.modules.css";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 
-export default function CollectionsCard({ key, id, cover, title, user }) {
+export default function CollectionsCard({ key, ids, cover, title, user }) {
   const [isHovered, setHovered] = useState(false);
-
   const handleMouseEnter = () => {
     setHovered(true);
   };
@@ -24,11 +23,13 @@ export default function CollectionsCard({ key, id, cover, title, user }) {
         alt={`${cover.urls.small}`}
         className="grid_collection_img"
       ></img>
+        <div className="container_icons">
       {isHovered && (
-        <div className="main_container_icons">
-          <img src="/img/PhotoMode.png" className="photo_mode_icon" />
-          </div>
-      )}
+        <Link to={`/collections/${ids}`} className="Link">
+        <img src="/img/PhotoMode.png" className="collection_icon" />
+        </Link>
+    )}
+        </div>
     </div>
   );
 }

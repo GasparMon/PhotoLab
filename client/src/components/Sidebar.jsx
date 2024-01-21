@@ -3,6 +3,7 @@ import "../css/Sidebar.modules.css";
 import SidebarCard from "./SidebarCard";
 import AppGetCollections from "../../controllers/AppGetCollections";
 import AppGetTopics from "../../controllers/AppGetTopics";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
 
@@ -45,9 +46,12 @@ export default function Sidebar() {
         <h1>Trends</h1>
       </div>
       <div className="sidebar_trends">
-        <h1>Collections</h1>
+      <Link to={`/collections`} className="Link">
+        <h1 className="text_link">Collections</h1>
+        </Link>
         <div className="main_collections">
           {collections.map((element) => (
+            
             <SidebarCard
               key={element.id}
               id={element.id}

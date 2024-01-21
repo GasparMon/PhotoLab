@@ -44,7 +44,6 @@
 .photo_frame img {
   position: relative;
   height: 95%;
-  object-fit: cover;
 }
 
 .photo_info {

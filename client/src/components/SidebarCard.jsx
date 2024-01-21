@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import "../css/SidebarCard.modules.css";
 import AppGetPhoto from "../../controllers/AppGetPhoto";
+import { useNavigate } from "react-router-dom";
 
 export default function SidebarCard({ cover, id, title, user }) {
   const [photocover, setCover] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPhoto = async () => {
@@ -21,8 +23,13 @@ export default function SidebarCard({ cover, id, title, user }) {
     fetchPhoto();
   }, [cover]);
 
+  const handleCollection = () => {
+    
+    navigate(`/collection/${id}`);
+  };
+
   return (
-    <div className="main_sidecard">
+    <div className="main_sidecard" onClick={handleCollection}>
       <div className="sidecard_img">
         {photocover && photocover.url ? (
           <img src={photocover.url.thumb} alt={photocover.id}></img>

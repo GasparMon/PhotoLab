@@ -2,10 +2,9 @@ import axios from "axios";
 
 const URL = import.meta.env.VITE_URL_HOST;
 
-const AppGetPhotos = async (page) => {
+const AppGetPhotoCollections = async (id) => {
   try {
-
-    const response = await axios.get(`${URL}/photos/${page}`);
+    const response = await axios.get(`${URL}/collection/photos/${id}`);
 
     if (response.data) {
       return response.data;
@@ -15,4 +14,4 @@ const AppGetPhotos = async (page) => {
   }
 };
 
-export default AppGetPhotos;
+export default AppGetPhotoCollections;

@@ -1,0 +1,78 @@
+/*  
+  .grid-img {
+    position: relative;
+    overflow: hidden;
+    z-index: 0; 
+    margin-bottom: 15px;
+  }
+  
+  .grid_gallery_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 0; 
+  }
+  
+  /* .grid-img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  
+  .grid-img:hover::before {
+    opacity: 1;
+  } */
+
+
+  /* Agrega estilos CSS para el contenedor y el icono */
+.grid-img {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+    transition: height 0.3s ease; /* Agrega una transición suave en la altura */
+  }
+  
+  .grid_gallery_img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  .container_icons_photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+  }
+  .container_icons_photo:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1; /* Muestra el icono al pasar el cursor */
+  }
+
+  .photo_mode_icon{
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    z-index: 3; 
+    cursor: pointer;
+    transition: scale 0.7s ease;
+    top: 3px;  
+    right: 3px;
+  
+  }
+
+  .photo_mode_icon:hover {
+    scale: 1.1;
+  }
+
+  

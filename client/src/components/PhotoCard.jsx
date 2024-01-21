@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../css/PhotoCard.modules.css";
 import { Link } from "react-router-dom";
 
 export default function PhotoCard({ id, img }) {
@@ -19,11 +20,14 @@ export default function PhotoCard({ id, img }) {
       onMouseLeave={handleMouseLeave}
     >
       <img src={`${img}`} alt={`${id}`} className="grid_gallery_img" />
-      {isHovered && (
-        <Link to={`/photo/${id}`} className="Link_photo">
-        <img src="/img/PhotoMode.png" className="photo_mode_icon" />
-        </Link>
-      )}
+      <div className="container_icons_photo">
+        {isHovered && (
+          <Link to={`/photo/${id}`} className="Link">
+          <img src="/img/PhotoMode.png" className="photo_mode_icon" />
+          </Link>
+        )}
+      </div>
     </div>
   );
+
 }

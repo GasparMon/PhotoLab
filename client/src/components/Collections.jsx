@@ -15,7 +15,7 @@ export default function Collections() {
             try {
               const dataCollections = await AppGetCollections();
               if (dataCollections) {
-                console.log(dataCollections)
+    
               setCollections(dataCollections)
               }
             } catch (error) {
@@ -40,7 +40,7 @@ export default function Collections() {
      {collections.map((item) => (
         <CollectionsCard
           key={item.id}
-          id={item.id}
+          ids={item.id}
           cover={item.cover_photo}
           title = {item.title}
           user = {item.user}

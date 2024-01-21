@@ -15,8 +15,15 @@ body {
   
 }
 
-.Link_photo{
-  height: 100%;
+.Link{
+  color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.text_link{
+  text-decoration: none;
+  cursor: pointer;
 }
 
 

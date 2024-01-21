@@ -14,7 +14,7 @@ const routes = require('express').Router();
 routes.get("/photos/:page", getPhotos);
 routes.get("/photo/:id", getPhoto);
 routes.get("/photo/stats/:id", getStats);
-routes.get("/collections/:page", getCollections);
+routes.get("/collections", getCollections);
 routes.get("/collection/:id", getCollection);
 routes.get("/collection/photos/:id", getPhotoCollections);
 routes.get("/topics", getTopics);

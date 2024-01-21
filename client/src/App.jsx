@@ -12,6 +12,7 @@ import AppGetSearchPhoto from "../controllers/AppGetSearchPhoto";
 import Photo from "./components/Photo";
 import Loading from "./components/Loading";
 import Collections from "./components/Collections";
+import CollectionGallery from "./components/CollectionGallery";
 
 function App() {
   const totalPages = 9;
@@ -131,6 +132,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/photo/:id" element={<Photo />} />
             <Route path="/collections" element={<Collections />} />
+            <Route path="/collections/:id" element={<CollectionGallery />} />
           </Routes>
         </div>
       );
