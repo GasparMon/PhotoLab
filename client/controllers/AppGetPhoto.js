@@ -5,7 +5,7 @@ const URL = import.meta.env.VITE_URL_HOST;
 const AppGetPhoto = async (id) => {
   try {
 
-    const response = await axios.get(`${URL}/photo/${id}`);
+    const response = await axios.get(`${URL}/photolab/photo/${id}`);
 
     if (response.data) {
       return response.data;

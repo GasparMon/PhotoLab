@@ -7,7 +7,7 @@ const AppGetTopic = async (id) => {
 
    const id_or_slug = id
 
-    const response = await axios.get(`${URL}/topic/${id_or_slug}`);
+    const response = await axios.get(`${URL}/photolab/topic/${id_or_slug}`);
 
     if (response.data) {
       return response.data;
