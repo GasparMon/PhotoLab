@@ -10,7 +10,7 @@ const AppGetCollections = async () => {
     const response = await axios.get(`${URL}/collections/1`);
 
     if (response.data) {
-      return response.data;
+      return response.data.slice(0,9);
     }
   } catch (error) {
     return alert(error);

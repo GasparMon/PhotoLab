@@ -24,8 +24,7 @@ export default function Navbar() {
     if (query !== "") {
       dispatch(getGalleryName(""));
     }
-      navigate("/");
-    
+    navigate("/");
   };
   return (
     <div className="main_container_navbar">

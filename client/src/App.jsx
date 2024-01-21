@@ -11,6 +11,7 @@ import { getPhotos } from "../redux/actions";
 import AppGetSearchPhoto from "../controllers/AppGetSearchPhoto";
 import Photo from "./components/Photo";
 import Loading from "./components/Loading";
+import Collections from "./components/Collections";
 
 function App() {
   const totalPages = 9;
@@ -21,7 +22,7 @@ function App() {
 
   const [connection, setConnection] = useState(false);
   const [galleries, setGalleries] = useState({
-    gallery:[]
+    gallery: [],
   });
 
   const [page_one, setPageOne] = useState(1);
@@ -31,7 +32,6 @@ function App() {
   useEffect(() => {
     setGalleries(() => ({
       gallery: [],
-
     }));
 
     setPageOne(1);
@@ -56,12 +56,12 @@ function App() {
           console.error("Error fetching data:", error);
         }
       };
-  
+
       fetchData(page_one);
       fetchData(page_two);
       fetchData(page_three);
     } else {
-      console.log(query)
+      console.log(query);
       const fetchData = async (page, query) => {
         try {
           const dataPhotos = await AppGetSearchPhoto(query, page);
@@ -77,13 +77,12 @@ function App() {
           console.error("Error fetching data:", error);
         }
       };
-  
+
       fetchData(page_one, query);
       fetchData(page_two, query);
       fetchData(page_three, query);
     }
   }, [page_one, page_two, page_three, query, dispatch]);
-  
 
   useEffect(() => {
     dispatch(getPhotos(galleries));
@@ -122,7 +121,7 @@ function App() {
     if (!connection) {
       return (
         <div className="main_app_gallery">
-          <Loading/>
+          <Loading />
         </div>
       );
     } else {
@@ -131,6 +130,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/photo/:id" element={<Photo />} />
+            <Route path="/collections" element={<Collections />} />
           </Routes>
         </div>
       );
