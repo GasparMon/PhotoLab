@@ -37,13 +37,12 @@
   height: 100%;
   width: 72%;
   align-items: center;
-  justify-content: baseline;
+  justify-content: center
 }
 
 .photo_frame img {
   position: relative;
   height: 95%;
-  width: 95%;
 }
 
 .photo_info {

@@ -10,104 +10,103 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPhotos } from "../redux/actions";
 import AppGetSearchPhoto from "../controllers/AppGetSearchPhoto";
 import Photo from "./components/Photo";
+import Loading from "./components/Loading";
 
 function App() {
-
-  const appData = useSelector((state) => state.appData)
-  const {query} = appData;
-
+  const totalPages = 9;
+  const appData = useSelector((state) => state.appData);
+  const { query } = appData;
 
   const dispatch = useDispatch();
 
-  const [galleries, setGalleries] = useState(
-    {
-      gallery_one: [],
-      gallery_two: [],
-      gallery_three:[],
-    }
-  );
-  const [searchGallery, setsearchGallery] = useState(
-    {
-      gallery_one: [],
-      gallery_two: [],
-      gallery_three:[],
-    }
-  );
+  const [connection, setConnection] = useState(false);
+  const [galleries, setGalleries] = useState({
+    gallery:[]
+  });
+
   const [page_one, setPageOne] = useState(1);
   const [page_two, setPageTwo] = useState(2);
   const [page_three, setPagethree] = useState(3);
 
-  
   useEffect(() => {
+    setGalleries(() => ({
+      gallery: [],
 
-if(query.length === 0){
+    }));
 
-  const fetchData = async (page, galleryKey) => {
-    try {
-      const dataPhotos = await AppGetPhotos(page);
-      if (dataPhotos) {
-        setGalleries((prevGalleries) => ({
-          ...prevGalleries,
-          [galleryKey]: [...prevGalleries[galleryKey], ...dataPhotos],
-        }));
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+    setPageOne(1);
+    setPageTwo(2);
+    setPagethree(3);
+  }, [query, dispatch]);
 
+  useEffect(() => {
+    if (query === "") {
+      const fetchData = async (page) => {
+        try {
+          const dataPhotos = await AppGetPhotos(page);
+          if (dataPhotos) {
+            setGalleries((prevGalleries) => ({
+              ...prevGalleries,
+              gallery: [...prevGalleries.gallery, ...dataPhotos],
+            }));
+            setConnection(true);
+          }
+        } catch (error) {
+          setConnection(false);
+          console.error("Error fetching data:", error);
+        }
+      };
   
-    fetchData(page_one, "gallery_one")
-    // fetchData(page_two, "gallery_two"),
-    // fetchData(page_three, "gallery_three")
-}else{
-console.log(query)
-  const fetchData = async (page, galleryKey, query) => {
-    try {
-      const dataPhotos = await AppGetSearchPhoto(query, page);
-      if (dataPhotos) {
-        setsearchGallery((prevGalleries) => ({
-          ...prevGalleries,
-          [galleryKey]: [...prevGalleries[galleryKey], ...dataPhotos],
-        }));
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
+      fetchData(page_one);
+      fetchData(page_two);
+      fetchData(page_three);
+    } else {
+      console.log(query)
+      const fetchData = async (page, query) => {
+        try {
+          const dataPhotos = await AppGetSearchPhoto(query, page);
+          if (dataPhotos) {
+            setGalleries((prevGalleries) => ({
+              ...prevGalleries,
+              gallery: [...prevGalleries.gallery, ...dataPhotos],
+            }));
+            setConnection(true);
+          }
+        } catch (error) {
+          setConnection(false);
+          console.error("Error fetching data:", error);
+        }
+      };
   
-    fetchData(page_one, "gallery_one", query)
-    // fetchData(page_two, "gallery_two"),
-    // fetchData(page_three, "gallery_three")
-
-}
-
+      fetchData(page_one, query);
+      fetchData(page_two, query);
+      fetchData(page_three, query);
+    }
   }, [page_one, page_two, page_three, query, dispatch]);
+  
 
-  useEffect(()=>{
-    dispatch(getPhotos(galleries))
-  },[galleries])
-
-  useEffect(()=>{
-    dispatch(getPhotos(searchGallery))
-  },[searchGallery])
+  useEffect(() => {
+    dispatch(getPhotos(galleries));
+  }, [galleries]);
 
   const handleScroll = () => {
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
 
-    if (scrollTop + clientHeight >= scrollHeight / 2) {
-      if (page_one + 3 <= totalPages) {
-        setPageOne((prevPage) => prevPage + 3);
-      }
+    if (scrollTop + clientHeight >= scrollHeight - 500) {
+      setPageOne((prevPage) => {
+        const nextPage = prevPage + 3;
+        return nextPage <= totalPages ? nextPage : prevPage;
+      });
 
-      //   if (page_two + 3 <= totalPages) {
-      //     setPageTwo((prevPage) => prevPage + 3);
-      //   }
+      setPageTwo((prevPage) => {
+        const nextPage = prevPage + 3;
+        return nextPage <= totalPages ? nextPage : prevPage;
+      });
 
-      //   if (page_three + 3 <= totalPages) {
-      //     setPagethree((prevPage) => prevPage + 3);
-      //   }
+      setPagethree((prevPage) => {
+        const nextPage = prevPage + 3;
+        return nextPage <= totalPages ? nextPage : prevPage;
+      });
     }
   };
 
@@ -119,6 +118,25 @@ console.log(query)
     };
   }, []);
 
+  const optionalRender = () => {
+    if (!connection) {
+      return (
+        <div className="main_app_gallery">
+          <Loading/>
+        </div>
+      );
+    } else {
+      return (
+        <div className="main_app_gallery">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/photo/:id" element={<Photo />} />
+          </Routes>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="main_app_div">
       <div className="main_app_navbar">
@@ -128,16 +146,10 @@ console.log(query)
       <div className="main_app_container">
         <div className="main_over"></div>
         <div className="main_home">
-        <div className="main_app_sidebar">
-          <Sidebar></Sidebar>
-        </div>
-
-        <div className="main_app_gallery">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/photo/:id" element={<Photo/>}/>
-          </Routes>
-        </div>
+          <div className="main_app_sidebar">
+            <Sidebar></Sidebar>
+          </div>
+          {optionalRender()}
         </div>
       </div>
     </div>

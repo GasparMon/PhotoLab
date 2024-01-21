@@ -1,24 +1,40 @@
 import { useState } from "react";
 import "../css/Navbar.modules.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getGalleryName } from "../../redux/actions";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function Navbar() {
+  const appData = useSelector((state) => state.appData);
+  const { query } = appData;
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [query, setquery] = useState("");
+  const [keyword, setkeyword] = useState("");
 
   const handleChange = (event) => {
-    setquery(event.target.value);
+    setkeyword(event.target.value);
   };
 
   const handleSearch = () => {
-    dispatch(getGalleryName(query))
+    dispatch(getGalleryName(keyword));
+  };
 
-  }
+  const handleHome = () => {
+    setkeyword("");
+    if (query !== "") {
+      dispatch(getGalleryName(""));
+    }
+      navigate("/");
+    
+  };
   return (
     <div className="main_container_navbar">
       <div className="navbar_icon">
-        <img src="/img/main_icon.png" alt="main_icon"></img>
+        <img
+          src="/img/main_icon.png"
+          alt="main_icon"
+          onClick={handleHome}
+        ></img>
       </div>
       <div className="navbar_title">
         <h1>PhotoLab</h1>
@@ -28,21 +44,19 @@ export default function Navbar() {
           placeholder="Search for photos"
           className="navbar_input"
           type="text"
-          value={query}
+          value={keyword}
           onChange={handleChange}
         />
-        <img 
-        src="/img/search_photo.png"
-         alt="search_icon"
-         onClick={handleSearch}
-         ></img>
+        <img
+          src="/img/most_popular.png"
+          alt="search_icon"
+          onClick={handleSearch}
+        ></img>
       </div>
       <div className="navbar_theme">
         <label class="container"></label>
       </div>
-      <div className="navbar_info">
-        <h2>About Me</h2>
-      </div>
+      <div className="navbar_info"></div>
     </div>
   );
 }

@@ -18,7 +18,7 @@ routes.get("/collections/:page", getCollections);
 routes.get("/collection/:id", getCollection);
 routes.get("/collection/photos/:id", getPhotoCollections);
 routes.get("/topics", getTopics);
-routes.get("/search/photo/:page", getSearchPhotos);
+routes.get("/search/photos/:page", getSearchPhotos);
 routes.get("/search/collections", getSearchCollections);
 routes.get("/collection/related/:id", getRelatedCollections);
 

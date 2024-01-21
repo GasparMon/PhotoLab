@@ -22,7 +22,7 @@
 
 .navbar_icon img{
     cursor: pointer;
-    height: 80%;
+    height: 90%;
 }
 
 .navbar_title{
@@ -45,6 +45,12 @@
     align-items: center;
     justify-content: center;
 }
+
+.navbar_searchbar img{
+  height: 60%;
+
+}
+
 
 
 

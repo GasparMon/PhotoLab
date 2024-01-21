@@ -10,20 +10,18 @@ const getSearchPhotos = async (req, res) => {
     const page = req.params.page || 1;
 
   try {
-    const response = await axios.get(`${URL}/search/photos`, {
+    const response = await axios.get(`${URL}/search/photos?page=${page}&query=${query}`, {
         params: {
-          query,
-          page,
           order_by: 'relevant', 
         },
         headers: {
           Authorization: `Client-ID ${apiKey}`,
         },
       });
-
+      
     if (response.data) {
-
-      const photosData = response.data.map((element) => ({
+      
+      const photosData = response.data.results.map((element) => ({
         id: element.id,
         url: element.urls,
         user: element.user,

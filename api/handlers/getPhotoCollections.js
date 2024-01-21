@@ -10,7 +10,7 @@ const getPhotoCollections = async (req, res) => {
     try{
 
         const {id} = req.params;
-
+        console.log(id)
         const response = await axios.get(`${URL}/collections/${id}/photos/?client_id=${apiKey}`);
 
         if(response.data){
