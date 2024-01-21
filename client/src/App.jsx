@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
@@ -13,11 +13,14 @@ import Photo from "./components/Photo";
 import Loading from "./components/Loading";
 import Collections from "./components/Collections";
 import CollectionGallery from "./components/CollectionGallery";
+import Topics from "./components/Topics";
+import TopicGallery from "./components/TopicGallery";
 
 function App() {
   const totalPages = 9;
   const appData = useSelector((state) => state.appData);
   const { query } = appData;
+  const location = useLocation();
 
   const dispatch = useDispatch();
 
@@ -41,47 +44,50 @@ function App() {
   }, [query, dispatch]);
 
   useEffect(() => {
-    if (query === "") {
-      const fetchData = async (page) => {
-        try {
-          const dataPhotos = await AppGetPhotos(page);
-          if (dataPhotos) {
-            setGalleries((prevGalleries) => ({
-              ...prevGalleries,
-              gallery: [...prevGalleries.gallery, ...dataPhotos],
-            }));
-            setConnection(true);
-          }
-        } catch (error) {
-          setConnection(false);
-          console.error("Error fetching data:", error);
-        }
-      };
 
-      fetchData(page_one);
-      fetchData(page_two);
-      fetchData(page_three);
-    } else {
-      console.log(query);
-      const fetchData = async (page, query) => {
-        try {
-          const dataPhotos = await AppGetSearchPhoto(query, page);
-          if (dataPhotos) {
-            setGalleries((prevGalleries) => ({
-              ...prevGalleries,
-              gallery: [...prevGalleries.gallery, ...dataPhotos],
-            }));
-            setConnection(true);
+    if(location.pathname == "/"){
+      if (query === "") {
+        const fetchData = async (page) => {
+          try {
+            const dataPhotos = await AppGetPhotos(page);
+            if (dataPhotos) {
+              setGalleries((prevGalleries) => ({
+                ...prevGalleries,
+                gallery: [...prevGalleries.gallery, ...dataPhotos],
+              }));
+              setConnection(true);
+            }
+          } catch (error) {
+            setConnection(false);
+            console.error("Error fetching data:", error);
           }
-        } catch (error) {
-          setConnection(false);
-          console.error("Error fetching data:", error);
-        }
-      };
-
-      fetchData(page_one, query);
-      fetchData(page_two, query);
-      fetchData(page_three, query);
+        };
+  
+        fetchData(page_one);
+        fetchData(page_two);
+        fetchData(page_three);
+      } else {
+    
+        const fetchData = async (page, query) => {
+          try {
+            const dataPhotos = await AppGetSearchPhoto(query, page);
+            if (dataPhotos) {
+              setGalleries((prevGalleries) => ({
+                ...prevGalleries,
+                gallery: [...prevGalleries.gallery, ...dataPhotos],
+              }));
+              setConnection(true);
+            }
+          } catch (error) {
+            setConnection(false);
+            console.error("Error fetching data:", error);
+          }
+        };
+  
+        fetchData(page_one, query);
+        fetchData(page_two, query);
+        fetchData(page_three, query);
+      }
     }
   }, [page_one, page_two, page_three, query, dispatch]);
 
@@ -125,18 +131,20 @@ function App() {
           <Loading />
         </div>
       );
-    } else {
-      return (
-        <div className="main_app_gallery">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/photo/:id" element={<Photo />} />
-            <Route path="/collections" element={<Collections />} />
-            <Route path="/collections/:id" element={<CollectionGallery />} />
-          </Routes>
-        </div>
-      );
     }
+  
+    return (
+      <div className="main_app_gallery">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/photo/:id" element={<Photo />} />
+          <Route path="/collections" element={<Collections />} />
+          <Route path="/collections/:id" element={<CollectionGallery />} />
+          <Route path="/topics" element={<Topics />} />
+          <Route path="/topic/:id" element={<TopicGallery />} />
+        </Routes>
+      </div>
+    );
   };
 
   return (

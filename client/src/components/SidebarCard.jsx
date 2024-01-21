@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import "../css/SidebarCard.modules.css";
 import AppGetPhoto from "../../controllers/AppGetPhoto";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export default function SidebarCard({ cover, id, title, user }) {
+export default function SidebarCard({ cover, id, title, user, location }) {
   const [photocover, setCover] = useState({});
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ export default function SidebarCard({ cover, id, title, user }) {
 
   const handleCollection = () => {
     
-    navigate(`/collection/${id}`);
+    navigate(`${location}/${id}`);
   };
 
   return (

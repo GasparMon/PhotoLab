@@ -17,6 +17,7 @@ export default function Navbar() {
 
   const handleSearch = () => {
     dispatch(getGalleryName(keyword));
+    navigate("/");
   };
 
   const handleHome = () => {

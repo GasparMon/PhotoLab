@@ -5,12 +5,14 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AppGetPhotoCollections from "../../controllers/AppGetPhotoCollections";
 import AppGetCollection from "../../controllers/AppGetCollection";
+import AppGetTopic from "../../controllers/AppGetTopic";
+import AppGetTopicPhotos from "../../controllers/AppGetTopicPhotos";
 
-export default function CollectionGallery() {
+export default function TopicGallery() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [collection, setCollection] = useState({});
+  const [topic, setTopic] = useState({});
   const [gallery, setGallery] = useState([]);
   const [galleryOne, setGalleryOne] = useState([]);
   const [galleryTwo, setGalleryTwo] = useState([]);
@@ -21,21 +23,21 @@ export default function CollectionGallery() {
   };
 
   useEffect(() => {
-    const fetchCollection = async () => {
+    const fetchTopic = async () => {
       try {
-        const data = await AppGetCollection(id);
+        const data = await AppGetTopic(id);
 
         if (data) {
-          setCollection(data);
+            setTopic(data);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
-    const fetchCollectionPhoto = async () => {
+    const fetchTopicPhoto = async () => {
       try {
-        const data = await AppGetPhotoCollections(id);
+        const data = await AppGetTopicPhotos(id);
 
         if (data) {
           setGallery(data);
@@ -45,9 +47,9 @@ export default function CollectionGallery() {
       }
     };
 
-    fetchCollection();
+    fetchTopic();
 
-    fetchCollectionPhoto();
+    fetchTopicPhoto();
   }, [id]);
 
   useEffect(() => {
@@ -74,13 +76,16 @@ export default function CollectionGallery() {
     }
   }, [gallery]);
 
+  console.log(topic)
+  console.log(gallery)
+
   return (
     <div className="main_container_collection">
-      {Object.keys(collection).length > 0 && (
+      {Object.keys(topic).length > 0 && (
         <>
           <div className="colection_title">
-            <p>Collection</p>
-            <h1>{`${collection.title}`}</h1>
+            <p>Topic</p>
+            <h1>{`${topic.title}`}</h1>
           </div>
           <div className="collection_container">
             <div className="collection_gallery">
@@ -103,15 +108,15 @@ export default function CollectionGallery() {
             <div className="collection_info">
               <div className="creator_info">
                 <div className="creator_img">
-                  <img src={`${collection.user.profile_image.large}`}></img>
+                  {/* <img src={`${topic.user.profile_image.large}`}></img> */}
                 </div>
                 <div className="creator_quotes">
-                  <h3>{`${collection.user.name}`}</h3>
-                  <p>{!collection.user.instagram_username ? "" : `@${collection.user.instagram_username}`}</p>
+                  {/* <h3>{`${topic.user.name}`}</h3>
+                  <p>{!topic.user.instagram_username ? "" : `@${topic.user.instagram_username}`}</p> */}
                 </div>
               </div>
               <div className="creator_bio">
-                <p>{!collection.user.bio ? "" : collection.user.bio}</p>
+                <p>{!topic.description ? "" : topic.description}</p>
 
                 <p>{`${gallery.length} Photos`}</p>
               </div>

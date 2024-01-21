@@ -23,7 +23,8 @@ const getTopics = async (req, res) => {
         cover_photo: element.cover_photo,
     }));
 
-      return res.status(200).json(dataTopic);
+
+      return res.status(200).json(dataTopic.slice(0,9));
     } else {
       return res.status(400).json("Error to get Information");
     }

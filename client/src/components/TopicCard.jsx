@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../css/CollectionsCard.modules.css";
 import { Link} from "react-router-dom";
 
-export default function CollectionsCard({ key, ids, cover, title, user }) {
+export default function TopicCard({ key, ids, cover, title, user }) {
   const [isHovered, setHovered] = useState(false);
   const handleMouseEnter = () => {
     setHovered(true);
@@ -26,7 +26,7 @@ export default function CollectionsCard({ key, ids, cover, title, user }) {
         <div className="container_icons">
       {isHovered && (
         <>
-        <Link to={`/collections/${ids}`} className="Link">
+        <Link to={`/topic/${ids}`} className="Link">
         <img src="/img/PhotoMode.png" className="collection_icon" />
         
         </Link>

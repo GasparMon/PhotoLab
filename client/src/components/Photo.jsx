@@ -54,7 +54,7 @@ export default function Photo() {
                 </div>
               </div>
               <div className="photo_alt">
-                <p>{`"${photo.alt}"`}</p>
+                <p>{!photo.alt? "" : `"${photo.alt}"`}</p>
                 </div>
                 <div className="gallery_back">
                 <img src="/img/GalleryModepng.png" alt="/img/GalleryModepng.png" onClick={goBack}></img>

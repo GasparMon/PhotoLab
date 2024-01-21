@@ -1,10 +1,12 @@
-import { GALLERYNAME, GETPHOTOS } from "./types";
+import { GALLERYNAME, GETCOLLECTIONS, GETPHOTOS, GETTOPICS } from "./types";
 
 const initialState = {
 
     appData: {
 
         landingGallery: {},
+        collections: {},
+        topics:{},
         query:""
 
     }
@@ -34,6 +36,26 @@ export default function reducer(state = initialState, action){
                     query: action.payload
                 }
             }
+
+        case GETCOLLECTIONS:
+
+        return {
+            ...state,
+            appData:{
+                ...state.appData,
+                collections: action.payload
+            }
+        }
+
+        case GETTOPICS:
+
+        return{
+            ...state,
+            appData:{
+                ...state.appData,
+                topics: action.payload
+            }
+        }
 
         default:
             

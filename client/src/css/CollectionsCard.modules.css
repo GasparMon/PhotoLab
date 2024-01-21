@@ -24,7 +24,7 @@
   }
 
   .container_icons:hover{
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.591);
   }
 
   .container_icons img{
@@ -39,7 +39,18 @@
   
   }
 
+  .container_icons h2{
+    position: absolute;
+    z-index: 3; 
+    font-size: 30px;
+    bottom: 20px;  
+    left: 20px;
+    margin: 0;
+    color: white;
+  }
+
   .container_icons img:hover {
     scale: 1.1;
   }
+
 

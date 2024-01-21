@@ -29,6 +29,10 @@
     margin: 0;
   }
 
+  .creator_quotes p {
+    font-size: 15px;
+  }
+
   .collection_container {
     position: relative;
     display: flex;
