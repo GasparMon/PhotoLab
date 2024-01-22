@@ -16,16 +16,19 @@ export default function Navbar() {
   };
 
   const handleSearch = () => {
-    dispatch(getGalleryName(keyword));
-    navigate("/");
+
+      dispatch(getGalleryName(keyword));
+      navigate("/");
+      setkeyword("")
   };
 
   const handleHome = () => {
-    setkeyword("");
+   
     if (query !== "") {
       dispatch(getGalleryName(""));
     }
     navigate("/");
+    setkeyword("");
   };
   return (
     <div className="main_container_navbar">
