@@ -50,7 +50,7 @@ export default function Photo() {
                 </div>
                 <div className="creator_quotes">
                   <h3>{`${photo.user.name}`}</h3>
-                  <p>{`@${photo.user.instagram_username}`}</p>
+                  <p>{!photo.user.instagram_username ? "" : `@${photo.user.instagram_username}`}</p>
                 </div>
               </div>
               <div className="photo_alt">

@@ -28,16 +28,203 @@ body {
 }
 
 
+@media screen and (max-width: 1500px){
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  .navbar_title h1 {
+    font-size: 35px;
   }
-  a:hover {
-    color: #747bff;
+
+  .navbar_icon img{
+    cursor: pointer;
+    height: 80%;
+}
+
+.container_icons img,
+.photo_mode_icon{
+  height: 65px;
+  width: 65px;
+}
+
+.creator_img img{
+  height: 70%;
+  width: 80%;
+}
+.creator_quotes h3{
+  font-size: 20px;
+}
+
+.creator_quotes p{
+font-size: 17px;
+}
+
+.creator_bio p,
+.photo_alt p {
+  font-size: 17px;
+ 
+}
+.gallery_back img{
+  height: 70%;
+
+}
+
+
+
+.sidebar_trends h1{
+  font-size: 20px;
+  color: #000000;
+}
+
+.sidecard_title h1{
+  font-size: 20px;
+  color: #000000;
+}
+
+.sidecard_title h4,
+.sidecard_title p {
+  margin: 0;
+  color: #000000;
+  font-size: 12px;
+}
+
+.container_icons h2{
+  font-size: 24px;
+}
+
+
+}
+
+@media screen and (max-width: 1300px){
+
+  .navbar_title h1 {
+    font-size: 25px;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .navbar_icon img{
+    cursor: pointer;
+    height: 60%;
+}
+.container_icons img,
+.photo_mode_icon{
+  height: 50px;
+  width: 50px;
+}
+
+.creator_img img{
+  height: 60%;
+  width: 70%;
+}
+.creator_quotes h3{
+  font-size: 15px;
+}
+
+.creator_quotes p{
+font-size: 12px;
+}
+
+.creator_bio p,
+.photo_alt p {
+  font-size: 15px;
+ 
+}
+.gallery_back img{
+  height: 60%;
+
+}
+
+.container_icons h2{
+  font-size: 20px;
+}
+}
+
+@media screen and (max-width: 1000px){
+
+  .navbar_title h1 {
+    font-size: 20px;
   }
-} */
+
+  .navbar_icon img{
+    cursor: pointer;
+    height: 50%;
+}
+
+
+.container_icons img,
+.photo_mode_icon{
+  height: 40px;
+  width: 40px;
+}
+
+.creator_img img{
+  height: 50%;
+  width: 60%;
+}
+.creator_quotes h3{
+  font-size: 12px;
+}
+
+.creator_quotes p{
+font-size: 10px;
+}
+.creator_bio p,
+.photo_alt p {
+  font-size: 12px;
+ 
+}
+
+.sidebar_trends h1{
+  font-size: 17px;
+  color: #000000;
+}
+
+
+.sidecard_title h4,
+.sidecard_title p {
+  margin: 0;
+  color: #000000;
+  font-size: 10px;
+}
+
+.container_icons h2{
+  font-size: 16px;
+}
+
+}
+
+@media screen and (max-width: 700px){
+
+  .navbar_title h1 {
+    font-size: 0px;
+  }
+
+  .navbar_icon img{
+    cursor: pointer;
+    height: 50%;
+}
+
+.container_icons img,
+.photo_mode_icon{
+  height: 30px;
+  width: 30px;
+}
+
+.creator_img img{
+  height: 40%;
+  width: 50%;
+}
+.creator_quotes h3{
+  font-size: 10px;
+}
+
+.creator_quotes p{
+font-size: 8px;
+}
+.creator_bio p,
+.photo_alt p {
+  font-size: 10px;
+ 
+}
+
+.container_icons h2{
+  font-size: 12px;
+}
+}
