@@ -54,7 +54,7 @@ export default function SidebarCard({ cover, id, title, user, location }) {
         <div>
           <h4>{title}</h4>
         </div>
-        <div>{user && <p>@{user}</p>}</div>
+        <div className="sidecard_user">{user && <p>@{user}</p>}</div>
       </div>
     </div>
   );

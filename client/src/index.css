@@ -3,6 +3,8 @@
   color-scheme: light dark;
   color: #575757;
   background-color: #ffffff;
+  min-width: 700px;
+  min-height: 100vh;
   
 }
 
@@ -11,9 +13,12 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 700px;
   min-height: 100vh;
-  
+}
+
+body > * {
+  min-width: 300px; /* Ancho mínimo para todos los elementos hijos directos del cuerpo */
 }
 
 .Link{
@@ -136,6 +141,164 @@ font-size: 12px;
 }
 }
 
+
+@media screen and (max-width: 1200px){
+
+  
+  .main_app_navbar {
+    height: 10%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    
+  }
+
+  
+  
+  .main_home{
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 82%;
+    width: 100%;
+  }
+  .main_app_sidebar {
+    height: 7%;
+    width: 100%;
+    position: fixed;
+    top: 10%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    border: 1px solid rgb(201, 201, 201);
+   
+  }
+  
+  .main_app_gallery {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .sidebar_title {
+    display: block;
+  }
+
+  .loader{
+    display: block;
+  }
+
+  .sidecard_img{
+    display: block;
+  }
+
+  .main_sidecard{
+    height: 0px;
+    width: 0px;
+    display: block;
+    background-color: transparent;
+    
+}
+
+.sidecard_img {
+    height: 0%;
+    width: 0%;
+    display: block;
+}
+
+.sidecard_img img {
+    width: 0%; 
+    height: 0%; 
+    display: block;
+}
+
+.sidecard_title{
+    height: 0%;
+    width: 0%;
+    display: block;
+}
+
+.sidecard_title h1{
+   font-size: 0px;
+   display: block;
+}
+
+.sidecard_title h4,
+.sidecard_title p {
+    
+    font-size: 0px;
+    display: block;
+}
+
+.sidebar_trends {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 120px;
+  border-radius: 0px;
+  border: 0px;
+  padding: 0 30px; /* Ajuste del padding */
+  background-color: #ffffff;
+  transition: background-color 0.3s;  /* Agregamos una transición para suavizar el cambio de color */
+}
+
+.sidebar_trends:hover {
+  background-color: #c1c1c1;
+}
+
+.sidebar_trends > * {
+  width: 100%;
+}
+
+
+.sidebar_trends h1 {
+  color: #000000; /* Color inicial del texto del h1 */
+  transition: color 0.3s; /* Agregamos una transición para suavizar el cambio de color del texto */
+}
+
+.main_container_sidebar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  background-color: #ffffff; 
+}
+
+.sidebar_title{
+  height: 100%;
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+background-color: #000000
+}
+
+.sidebar_title h1{
+  font-size: 25px;
+  color: #fcfcfc;
+}
+
+.main_container_photo,
+.main_container_collections,
+.main_container_collection{
+  width: 100%;
+}
+
+
+
+}
+
+
 @media screen and (max-width: 1000px){
 
   .navbar_title h1 {
@@ -171,21 +334,26 @@ font-size: 10px;
  
 }
 
-.sidebar_trends h1{
-  font-size: 17px;
-  color: #000000;
-}
 
 
-.sidecard_title h4,
-.sidecard_title p {
-  margin: 0;
-  color: #000000;
-  font-size: 10px;
-}
 
 .container_icons h2{
   font-size: 16px;
+}
+
+.sidebar_title h1{
+  font-size: 22px;
+  color: #fcfcfc;
+}
+
+.sidebar_trends h1 {
+  font-size: 20px;
+  color: #000000; /* Color inicial del texto del h1 */
+  transition: color 0.3s; /* Agregamos una transición para suavizar el cambio de color del texto */
+}
+
+.navbar_searchbar{
+  height: 80px;
 }
 
 }
@@ -227,4 +395,59 @@ font-size: 8px;
 .container_icons h2{
   font-size: 12px;
 }
+
+.sidebar_title h1{
+  font-size: 19px;
+  color: #fcfcfc;
 }
+
+.sidebar_trends h1 {
+  font-size: 17px;
+  color: #000000; /* Color inicial del texto del h1 */
+  transition: color 0.3s; /* Agregamos una transición para suavizar el cambio de color del texto */
+}
+
+.main_app_div{
+  width: 700px;
+}
+
+}
+
+@media (max-width: 1200px) and (max-height: 700px){
+
+.main_app_div{
+  height: 700px;
+}
+
+.main_app_navbar {
+  height: 70px;
+  
+}
+
+.main_app_sidebar {
+  height: 70px;
+  align-items: center;
+}
+
+}
+
+@media (max-width: 1200px) and  (max-height: 500px){
+
+  .main_app_sidebar {
+    height: 90px;
+  }
+
+.sidebar_trends {
+  align-items:end;
+ 
+}
+
+
+
+.sidebar_title{
+  display: flex;
+  align-items:end;
+}
+
+  
+  }
